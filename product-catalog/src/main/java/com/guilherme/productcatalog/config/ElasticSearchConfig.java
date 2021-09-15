@@ -1,5 +1,6 @@
 package com.guilherme.productcatalog.config;
 
+
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +12,11 @@ import org.springframework.data.elasticsearch.core.ElasticsearchEntityMapper;
 import org.springframework.data.elasticsearch.core.EntityMapper;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
+
 @Configuration
 @EnableElasticsearchRepositories(basePackages = "com.guilherme.productcatalog.repository")
 public class ElasticSearchConfig extends AbstractElasticsearchConfiguration {
+
 
     @Override
     public RestHighLevelClient elasticsearchClient() {
@@ -29,6 +32,7 @@ public class ElasticSearchConfig extends AbstractElasticsearchConfiguration {
         ElasticsearchEntityMapper entityMapper = new ElasticsearchEntityMapper(elasticsearchMappingContext(),
                 new DefaultConversionService());
         entityMapper.setConversions(elasticsearchCustomConversions());
+
         return entityMapper;
     }
 }
