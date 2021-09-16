@@ -1,6 +1,6 @@
 package com.guilherme.productcatalog.controller;
 
-import com.guilherme.productcatalog.modal.Product;
+import com.guilherme.productcatalog.model.Product;
 import com.guilherme.productcatalog.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +14,18 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    @PostMapping
-    Product create(@RequestBody Product product){
+    @RequestMapping(method = RequestMethod.POST)
+    Product create(@RequestBody Product product) {
         return productRepository.save(product);
     }
 
-    @GetMapping(value="/{id}")
-    Optional<Product> findById(@PathVariable Integer id){
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    Optional<Product> findById(@PathVariable("id") Integer id) {
         return productRepository.findById(id);
-    }}
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public Iterable<Product> listAll() {
+        return productRepository.findAll();
+    }
+}
