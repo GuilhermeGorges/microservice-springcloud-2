@@ -13,7 +13,10 @@
 ## Technologies
     - Java
     - Spring Boot
-    - Maven
+    - Gradle
+    - Elasticsearch
+    - Redis
+    - Spring Cloud
 
 ##  How to run
 
